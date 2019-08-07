@@ -1,37 +1,37 @@
 {
-	"name": "react-ssr-basic",
-	"version": "1.0.0",
-	"description": "repository for react ssr basic setup.",
-	"main": "./src/server.js",
-	"scripts": {
-		"start": "npm-run-all --parallel watch:build watch:server",
-		"watch:build": "webpack --watch",
-		"watch:server": "nodemon \"./server.js\" --watch \"./ \""
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/ovpv/react-ssr-basic.git"
-	},
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/ovpv/react-ssr-basic/issues"
-	},
-	"homepage": "https://github.com/ovpv/react-ssr-basic#readme",
-	"dependencies": {
-		"express": "^4.17.1",
-		"react": "^16.8.6",
-		"react-dom": "^16.8.6",
-		"react-router-dom": "^5.0.1"
-	},
-	"devDependencies": {
-		"@babel/core": "^7.5.5",
-		"@babel/preset-env": "^7.5.5",
-		"@babel/preset-react": "^7.0.0",
-		"babel-loader": "^8.0.6",
-		"nodemon": "^1.19.1",
-		"npm-run-all": "^4.1.5",
-		"webpack": "^4.39.1",
-		"webpack-cli": "^3.3.6"
-	}
+  "name": "react-ssr-basic",
+  "version": "1.0.0",
+  "description": "repository for react ssr basic setup.",
+  "main": "./src/server.js",
+  "scripts": {
+    "start": "npm-run-all --parallel watch:server watch:build",
+    "watch:build": "webpack --watch",
+    "watch:server": "nodemon \"./server.js\" --watch \"./ \""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ovpv/react-ssr-basic.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ovpv/react-ssr-basic/issues"
+  },
+  "homepage": "https://github.com/ovpv/react-ssr-basic#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "nodemon": "^1.19.1",
+    "npm-run-all": "^4.1.5",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6"
+  }
 }

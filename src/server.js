@@ -9,15 +9,15 @@ const port = 3000;
 import Routes from "./routes";
 
 const HTML = (req, context) => {
-	const body = renderToString(
-		<Router location={req.url} context={context}>
-			<App />
-		</Router>
-	);
+  const body = renderToString(
+    <Router location={req.url} context={context}>
+      <App />
+    </Router>
+  );
 
-	return `<html>
+  return `<html>
     <head>
-        <title>Logistix</title>
+        <title>React basic SSR</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body style="margin:0;">
@@ -34,13 +34,13 @@ const context = {};
 app.use(express.static("dist"));
 
 app.get("*", (req, res) => {
-	return res.send(HTML({ url: "/404" }, context));
+  return res.send(HTML({ url: "/404" }, context));
 });
 
 Routes.forEach(route => {
-	app.get(route.url, (req, res) => {
-		return res.send(HTML(req, context));
-	});
+  app.get(route.url, (req, res) => {
+    return res.send(HTML(req, context));
+  });
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
