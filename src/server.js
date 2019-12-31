@@ -4,9 +4,16 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter as Router } from "react-router-dom";
 import path from "path";
 import App from "./client/app";
+import Routes from "./routes";
+
+const webpack = require("webpack");
+const webpackDevMiddleware = require("webpack-dev-middleware");
+
 const app = express();
 const port = 3000;
-import Routes from "./routes";
+
+const config = require("../webpack.config.js");
+const compiler = webpack(config[1]);
 
 const HTML = (req, context) => {
   const body = renderToString(
@@ -30,6 +37,14 @@ const HTML = (req, context) => {
 };
 
 const context = {};
+
+// Tell express to use the webpack-dev-middleware and use the webpack.config.js
+// configuration file as a base.
+app.use(
+  webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath
+  })
+);
 
 app.use(express.static("dist"));
 
