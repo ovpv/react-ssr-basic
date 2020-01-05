@@ -1,19 +1,12 @@
-import express from "express";
-import React from "react";
-import { renderToString } from "react-dom/server";
-import { StaticRouter as Router } from "react-router-dom";
-import path from "path";
-import App from "./client/app";
-import Routes from "./routes";
-
-const webpack = require("webpack");
-const webpackDevMiddleware = require("webpack-dev-middleware");
+import express from 'express';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { StaticRouter as Router } from 'react-router-dom';
+import App from './client/app';
+import Routes from './routes';
 
 const app = express();
 const port = 3000;
-
-const config = require("../webpack.config.js");
-const compiler = webpack(config[1]);
 
 const HTML = (req, context) => {
   const body = renderToString(
@@ -24,7 +17,7 @@ const HTML = (req, context) => {
 
   return `<html>
     <head>
-        <title>React basic SSR</title>
+        <title>React basic SSR | Server</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body style="margin:0;">
@@ -38,18 +31,10 @@ const HTML = (req, context) => {
 
 const context = {};
 
-// Tell express to use the webpack-dev-middleware and use the webpack.config.js
-// configuration file as a base.
-app.use(
-  webpackDevMiddleware(compiler, {
-    publicPath: config.output.publicPath
-  })
-);
+app.use(express.static('dist'));
 
-app.use(express.static("dist"));
-
-app.get("*", (req, res) => {
-  return res.send(HTML({ url: "/404" }, context));
+app.get('*', (req, res) => {
+  return res.send(HTML({ url: '/404' }, context));
 });
 
 Routes.forEach(route => {
