@@ -1,11 +1,11 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from 'react';
 
-export default class About extends Component {
-	render() {
-		return (
-			<Fragment>
-				<p>this is About</p>
-			</Fragment>
-		);
-	}
-}
+const About = () => {
+  return (
+    <Fragment>
+      <p>this is new About</p>
+    </Fragment>
+  );
+};
+
+export default About;

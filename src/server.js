@@ -1,12 +1,12 @@
-import express from "express";
-import React from "react";
-import { renderToString } from "react-dom/server";
-import { StaticRouter as Router } from "react-router-dom";
-import path from "path";
-import App from "./client/app";
+import express from 'express';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { StaticRouter as Router } from 'react-router-dom';
+import App from './client/app';
+import Routes from './routes';
+
 const app = express();
 const port = 3000;
-import Routes from "./routes";
 
 const HTML = (req, context) => {
   const body = renderToString(
@@ -17,7 +17,7 @@ const HTML = (req, context) => {
 
   return `<html>
     <head>
-        <title>React basic SSR</title>
+        <title>React basic SSR | Server</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
     <body style="margin:0;">
@@ -31,10 +31,10 @@ const HTML = (req, context) => {
 
 const context = {};
 
-app.use(express.static("dist"));
+app.use(express.static('dist'));
 
-app.get("*", (req, res) => {
-  return res.send(HTML({ url: "/404" }, context));
+app.get('*', (req, res) => {
+  return res.send(HTML({ url: '/404' }, context));
 });
 
 Routes.forEach(route => {
